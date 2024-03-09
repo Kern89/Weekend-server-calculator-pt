@@ -9,13 +9,47 @@ app.use(express.static('server/public'));
 // calculation objects:
 let calculations = []
 
-
+//variable to contain answer
+let answer = '';
 // Here's a wonderful place to make some routes:
 
 // GET /calculations
-
+app.get('/calculations', (req, res) => {
+  console.log('GET request made for /calculations');
+})
 // POST /calculations
-
+app.post('/calculations', (req, res) => {
+  console.log('POST request made for /calculations');
+  console.log(req.body);
+  //add new object from client to calculations array
+  calculations.push(req.body);
+  // function to make calculation 
+function makeCalculation() {
+  if(req.body.operator === '+') {
+    //console.log(req.body.numOne, 'PLUS', req.body.numTwo);
+    answer = parseFloat(req.body.numOne)+parseFloat(req.body.numTwo);
+    console.log(answer);
+  }
+  else if(req.body.operator === '-') {
+    // console.log(req.body.numOne, 'MINUS', req.body.numTwo);
+    answer = parseFloat(req.body.numOne)-parseFloat(req.body.numTwo);
+    console.log(answer);
+  }
+  else if(req.body.operator === '*') {
+    // console.log(req.body.numOne, 'TIMES', req.body.numTwo);
+    answer = parseFloat(req.body.numOne)*parseFloat(req.body.numTwo);
+    console.log(answer);
+  }
+  else if(req.body.operator === '/') {
+    // console.log(req.body.numOne, 'DIVIDE', req.body.numTwo);
+    answer = parseFloat(req.body.numOne)/parseFloat(req.body.numTwo);
+    console.log(answer);
+  }
+};
+makeCalculation();
+  // response code
+  res.sendStatus(201)
+})
 
 // PLEASE DO NOT MODIFY ANY CODE BELOW THESE BEARS:
 // 🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸
