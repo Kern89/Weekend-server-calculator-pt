@@ -28,25 +28,25 @@ function makeCalculation() {
   if(req.body.operator === '+') {
     //console.log(req.body.numOne, 'PLUS', req.body.numTwo);
     answer = parseFloat(req.body.numOne)+parseFloat(req.body.numTwo);
-    console.log(answer);
+    //console.log(answer);
   }
   else if(req.body.operator === '-') {
     // console.log(req.body.numOne, 'MINUS', req.body.numTwo;
     answer = parseFloat(req.body.numOne)-parseFloat(req.body.numTwo);
-    console.log(answer);
+    //console.log(answer);
   }
   else if(req.body.operator === '*') {
     // console.log(req.body.numOne, 'TIMES', req.body.numTwo;
     answer = parseFloat(req.body.numOne)*parseFloat(req.body.numTwo);
-    console.log(answer);
+    //console.log(answer);
   }
   else if(req.body.operator === '/') {
     // console.log(req.body.numOne, 'DIVIDE', req.body.numTwo);
     answer = parseFloat(req.body.numOne)/parseFloat(req.body.numTwo);
-    console.log(answer);
+    //console.log(answer);
   };
   req.body.result = answer;
-  console.log('req.body:', req.body);
+  //console.log('req.body:', req.body);
   calculations.push(req.body);
  //console.log('Calculations array:', calculations);
 };

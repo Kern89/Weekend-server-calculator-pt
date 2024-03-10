@@ -6,9 +6,7 @@ let subtration = document.querySelector('#subtractOp');
 let multiply = document.querySelector('#multiplyOp');
 let division = document.querySelector('#divideOp');
 let resultsDiv = document.querySelector('#resultHist');
-
-// array to hold calculations from server
-//let calculationsFromServer = [];
+let lastResultDiv = document.querySelector('#lastResult')
 
 // variable to hold chosen operator
 let currentOperator = [];
@@ -39,14 +37,14 @@ function getFromServer() {
     axios.get('/calculations').then((response) => {
         console.log('calculations back from server', response.data);
         let calculationsFromServer = response.data;
-        console.log('last result: ', calculationsFromServer.result);
+        //console.log('last result: ', response.data[response.data.length-1].result);
+        lastResultDiv.innerHTML = `${response.data[response.data.length-1].result}`
         //console.log('calculation from server: ', calculationsFromServer);
-        //console.log('From server',calculationsFromServer[calculation].numOne);
          // for loop to populate calculation onto the DOM
         for(calculation of calculationsFromServer) {
             resultsDiv.innerHTML += `
             <li>${calculation.numOne} ${calculation.operator} ${calculation.numTwo} = ${calculation.result}</li>
-            `
+            `;
         }
     }).catch((error) => {
         console.log(error);
