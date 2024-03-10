@@ -5,16 +5,13 @@ let addition = document.querySelector('#addOp');
 let subtration = document.querySelector('#subtractOp');
 let multiply = document.querySelector('#multiplyOp');
 let division = document.querySelector('#divideOp');
+let resultsDiv = document.querySelector('#resultHist');
+
+// array to hold calculations from server
+//let calculationsFromServer = [];
 
 // variable to hold chosen operator
 let currentOperator = [];
-
-// variable to send to server
-// let calculate = {
-//     numOne: numberOne,
-//     numTwo: numberTwo,
-//     operator: currentOperator,
-// };
 
 // functions to set operator array to current choice
 function addOperator(event) {
@@ -40,7 +37,17 @@ function divideOperator(event) {
 
 function getFromServer() {
     axios.get('/calculations').then((response) => {
-        console.log(response);
+        console.log('calculations back from server', response.data);
+        let calculationsFromServer = response.data;
+        console.log('last result: ', calculationsFromServer.result);
+        //console.log('calculation from server: ', calculationsFromServer);
+        //console.log('From server',calculationsFromServer[calculation].numOne);
+         // for loop to populate calculation onto the DOM
+        for(calculation of calculationsFromServer) {
+            resultsDiv.innerHTML += `
+            <li>${calculation.numOne} ${calculation.operator} ${calculation.numTwo} = ${calculation.result}</li>
+            `
+        }
     }).catch((error) => {
         console.log(error);
     })  
@@ -60,13 +67,13 @@ function sendToServer(event) {
         numOne: numberOne,
         numTwo: numberTwo,
         operator: currentOperator,
+        result: '',
     };
 
     // send calculate object to server with axios.get
     axios.post('/calculations', calculate).then((response) => {
         console.log(response);
-
-
+        resultsDiv.innerHTML = '';
         getFromServer();
     }).catch((error) => {
         console.log(error);
