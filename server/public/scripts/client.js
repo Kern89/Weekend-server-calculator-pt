@@ -15,22 +15,22 @@ let currentOperator = [];
 function addOperator(event) {
     event.preventDefault();
     currentOperator = '+';
-    console.log(currentOperator);
+    //console.log(currentOperator);
 };
 function subtractOperator(event) {
     event.preventDefault();
     currentOperator = '-';
-    console.log(currentOperator);
+   // console.log(currentOperator);
 };
 function multiplyOperator(event) {
     event.preventDefault();
     currentOperator = '*';
-    console.log(currentOperator);
+    //console.log(currentOperator);
 };
 function divideOperator(event) {
     event.preventDefault();
     currentOperator = '/';
-    console.log(currentOperator);
+    //console.log(currentOperator);
 };
 
 function getFromServer() {

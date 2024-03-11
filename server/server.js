@@ -14,41 +14,41 @@ let answer = '';
 
 // GET /calculations
 app.get('/calculations', (req, res) => {
-  //console.log('GET request made for /calculations');
-  //console.log('calculations on server', calculations);
+  console.log('GET request made for /calculations');
+  console.log('calculations on server', calculations);
   res.send(calculations);
 })
 // POST /calculations
 app.post('/calculations', (req, res) => {
-  //console.log('POST request made for /calculations');
-  //console.log('Request body: ',req.body);
+  console.log('POST request made for /calculations');
+  console.log('Request body: ',req.body);
 
   // function to make calculation 
 function makeCalculation() {
   if(req.body.operator === '+') {
     //console.log(req.body.numOne, 'PLUS', req.body.numTwo);
     answer = parseFloat(req.body.numOne)+parseFloat(req.body.numTwo);
-    //console.log(answer);
+    console.log(answer);
   }
   else if(req.body.operator === '-') {
     // console.log(req.body.numOne, 'MINUS', req.body.numTwo;
     answer = parseFloat(req.body.numOne)-parseFloat(req.body.numTwo);
-    //console.log(answer);
+    console.log(answer);
   }
   else if(req.body.operator === '*') {
     // console.log(req.body.numOne, 'TIMES', req.body.numTwo;
     answer = parseFloat(req.body.numOne)*parseFloat(req.body.numTwo);
-    //console.log(answer);
+    console.log(answer);
   }
   else if(req.body.operator === '/') {
     // console.log(req.body.numOne, 'DIVIDE', req.body.numTwo);
     answer = parseFloat(req.body.numOne)/parseFloat(req.body.numTwo);
-    //console.log(answer);
+    console.log(answer);
   };
   req.body.result = answer;
-  //console.log('req.body:', req.body);
+  console.log('req.body:', req.body);
   calculations.push(req.body);
- //console.log('Calculations array:', calculations);
+ console.log('Calculations array:', calculations);
 };
 makeCalculation();
   // response status code
