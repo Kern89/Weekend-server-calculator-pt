@@ -24,32 +24,32 @@ app.post('/calculations', (req, res) => {
   console.log('Request body: ',req.body);
 
   // function to make calculation 
-function makeCalculation() {
-  if(req.body.operator === '+') {
-    //console.log(req.body.numOne, 'PLUS', req.body.numTwo);
-    answer = parseFloat(req.body.numOne)+parseFloat(req.body.numTwo);
-    console.log(answer);
-  }
-  else if(req.body.operator === '-') {
-    // console.log(req.body.numOne, 'MINUS', req.body.numTwo;
-    answer = parseFloat(req.body.numOne)-parseFloat(req.body.numTwo);
-    console.log(answer);
-  }
-  else if(req.body.operator === '*') {
-    // console.log(req.body.numOne, 'TIMES', req.body.numTwo;
-    answer = parseFloat(req.body.numOne)*parseFloat(req.body.numTwo);
-    console.log(answer);
-  }
-  else if(req.body.operator === '/') {
-    // console.log(req.body.numOne, 'DIVIDE', req.body.numTwo);
-    answer = parseFloat(req.body.numOne)/parseFloat(req.body.numTwo);
-    console.log(answer);
+  function makeCalculation() {
+    if(req.body.operator === '+') {
+      //console.log(req.body.numOne, 'PLUS', req.body.numTwo);
+      answer = parseFloat(req.body.numOne)+parseFloat(req.body.numTwo);
+      console.log(answer);
+    }
+    else if(req.body.operator === '-') {
+      // console.log(req.body.numOne, 'MINUS', req.body.numTwo;
+      answer = parseFloat(req.body.numOne)-parseFloat(req.body.numTwo);
+      console.log(answer);
+    }
+    else if(req.body.operator === '*') {
+      // console.log(req.body.numOne, 'TIMES', req.body.numTwo;
+      answer = parseFloat(req.body.numOne)*parseFloat(req.body.numTwo);
+      console.log(answer);
+    }
+    else if(req.body.operator === '/') {
+      // console.log(req.body.numOne, 'DIVIDE', req.body.numTwo);
+      answer = parseFloat(req.body.numOne)/parseFloat(req.body.numTwo);
+      console.log(answer);
+    };
+    req.body.result = answer;
+    console.log('req.body:', req.body);
+    calculations.push(req.body);
+  console.log('Calculations array:', calculations);
   };
-  req.body.result = answer;
-  console.log('req.body:', req.body);
-  calculations.push(req.body);
- console.log('Calculations array:', calculations);
-};
 makeCalculation();
   // response status code
   res.sendStatus(201)
